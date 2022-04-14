@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    var empList = [
+        {
+            name : 'jhon Doe',
+            dept : 'php',
+            empId : 5
+        },
+        
+        {
+            name : 'paul Smith',
+            dept : 'MERN',
+            empId : 4
+        },
+
+        {
+            name : 'Tom Smith',
+            dept : 'SEO',
+            empId : 7
+        },
+    ];
+    
+    //sort the object by empid
+    
+    let idArray = [];
+    // getting empIdArray i.e. idArray
+    empList.forEach (function(value){   
+        idArray.push((value.empId));
+    });
+
+    console.log(idArray);
+
+    // sorting idArray 
+    idArray.sort( function(a, b){
+        return a - b;
+    });
+    
+    console.log(idArray);
+
+
+    var tempObj;
+
+    // swapping
+    for(var i = 0; i < idArray.length; i++) {
+        for(var j=0; j<empList.length; j++) {
+            if( empList[j].empId == idArray[i]) {
+                tempObj = empList[i];
+                empList[i] = empList[j];
+                empList[j] = tempObj;            
+            }
+        }
+    }
+
+    // displaying the sorted object 
+    empList.forEach(function(value,key){
+        console.log(key);
+        console.log(value);
+    })
+
+
+
+
+</script>    
+</body>
+</html>
