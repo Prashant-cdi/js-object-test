@@ -9,6 +9,7 @@
 <body>
 <script>
 
+ // samples: 1. with loops only.
     var empList = [
         {
             name : 'jhon Doe',
@@ -26,48 +27,76 @@
             name : 'Tom Smith',
             dept : 'SEO',
             empId : 7
-        },
+        }
     ];
     
-    //sort the object by empid
-    
-    let idArray = [];
-    // getting empIdArray i.e. idArray
-    empList.forEach (function(value){   
-        idArray.push((value.empId));
+    console.log("before sorting by using loops");
+    empList.forEach(function(value,key){
+        console.log(key);
+        console.log(value);
     });
-
-    console.log(idArray);
-
-    // sorting idArray 
-    idArray.sort( function(a, b){
-        return a - b;
-    });
+   
     
-    console.log(idArray);
+    var temp ; 
+    for(var i=0; i < empList.length; i++) {
+	    for(var j=i+1; j < empList.length; j++) {
+		    if( empList[i].empId > empList[j].empId )
+			    {
+				    temp = 	empList[i].empId;
+				    empList[i].empId = empList[j].empId ;
+                    empList[j].empId = temp;
+			    }
+	}
+}
 
-
-    var tempObj;
-
-    // swapping
-    for(var i = 0; i < idArray.length; i++) {
-        for(var j=0; j<empList.length; j++) {
-            if( empList[j].empId == idArray[i]) {
-                tempObj = empList[i];
-                empList[i] = empList[j];
-                empList[j] = tempObj;            
-            }
-        }
-    }
-
+console.log("after sorting by using loops");
     // displaying the sorted object 
     empList.forEach(function(value,key){
         console.log(key);
         console.log(value);
-    })
+    });
+
+    //  2nd. with js sorting functions 
+    var empList2 = [
+        {
+            name : 'jhon Doe',
+            dept : 'php',
+            empId : 5
+        },
+        
+        {
+            name : 'paul Smith',
+            dept : 'MERN',
+            empId : 4
+        },
+
+        {
+            name : 'Tom Smith',
+            dept : 'SEO',
+            empId : 7
+        }
+    ];
 
 
+// using js sorting functions
+console.log("before sorting using js sorting functions");
 
+empList2.forEach(function(value,key){
+        console.log(key);
+        console.log(value);
+    });
+
+
+	empList2.sort(function(a,b) {
+        return a.empId - b.empId;
+    });
+
+    console.log("after sorting using js sorting functions");
+
+        empList2.forEach(function(value,key){
+        console.log(key);
+        console.log(value);
+    });
 
 </script>    
 </body>
